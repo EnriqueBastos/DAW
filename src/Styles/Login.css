@@ -1,0 +1,35 @@
+body{
+    background-color: teal;
+}
+.loginForm{
+    position: absolute;
+    right: 0px;
+    width: 34em;
+    height: 100%;
+    padding: 30px;
+    margin-right: 0;
+    
+    background-color: white;
+    text-align: center;
+}
+.loginInput{
+    margin-top: 16%;
+    
+}
+table{
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.ant-form-item-children{
+    margin-right: 20%;
+}
+.ant-form-explain{
+    text-align: left;
+}
+
+img{
+    width: 60%;
+    margin-bottom: -3em;
+}
