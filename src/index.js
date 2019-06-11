@@ -1,20 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import * as serviceWorker from './serviceWorker';
-import {Login} from './Components/Login.js';
 import {BrowserRouter, Route} from 'react-router-dom';
-import Home from "./Components/Home";
-import Music from './Components/Music';
-import ContactList from './Components/ContactList.js';
+
+import NavBar from './App/Shared/NavBar/NavBar';
+import Login from './App/Components/Login/Login';
+import Home from "./App/Components/Home/Home";
+import Music from './App/Components/Music/Music';
+import ContactList from './App/Components/Contacts/ContactList.js';
+import Profile from './App/Components/Profile/Profile.js';
+import PhotoInfo from './App/Components/Photo/PhotoInfo';
+import SearchContacts from './App/Components/SearchContacts/SearchContacts';
 
 
 const App = () =>(
-            <BrowserRouter>
-                <Route path ="/login" component={Login} />
-                <Route path ="/home" component={Home} />
-                <Route path ="/music" component={Music} />
-                <Route path ="/contacts" component={ContactList} />
-            </BrowserRouter>
+            
+            <div>
+                <BrowserRouter>
+                <div>
+                        <Route exact path ="/" component={Login} />
+                        <Route exact path ="/home" component={Home} />
+                        <Route exact path ="/contacts/:name" component={SearchContacts} />
+                        <Route exact path ="/contacts" component={ContactList} />
+                        <Route exact path ="/music" component={Music}/>
+                        <Route exact path ="/music/:userId" component={Music} />
+                        <Route exact path ="/profile/:id" component={Profile} />
+                        <Route exact path = "/profile" component = {Profile} />
+                        <Route exact path = "/photo/:photoId" component = {PhotoInfo} />
+                </div>
+                </BrowserRouter>
+            </div>
+                
+               
 );
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,0 +1,97 @@
+.friend-notification{
+    color:green!important;
+    font-weight: 500!important;
+    margin-left: -8.5%;
+
+}
+.bg-friendRequest{
+    position: fixed;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.507);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+.friendRequest-container{
+    width: 60%;
+    background:white;
+    border-radius : 10px;
+    height: 50%;
+    overflow: auto;
+    padding: 2em;
+}
+.friend-request{
+    margin-top: 9%;
+    height: 10em;
+    text-align: center;
+    justify-content: center;
+}
+.friend-request h2{
+    color:black !important;
+}
+
+
+.close-friendRequests{
+
+    color: rgba(0, 0, 0, 0.808);
+    margin-bottom: -5%;
+    margin-left: 96%;
+    margin-top:-2%;
+    font-size : 40px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.ant-col .ant-col-8{
+    height: 100%;
+}
+.decline{
+    background: rgb(212, 19, 19);
+}
+.decline:active{
+    background: red;
+    
+}
+.accept:active{
+    background: green;
+}
+.accept{
+    background : rgb(16, 139, 16);
+}
+.friend-request button, .friend-request button::selection{
+    width: 90%;
+    height: 100%;
+    transition: 0.5s;
+    color: white;
+    border:none;
+    border-radius: 10px;
+    font-size: 2.5em;
+}
+
+.friend-request:last-child{
+    margin-bottom: 10%;
+}
+.friend-request h1{
+    margin-top : 10%;
+}
+.check{
+    color:green;
+}
+.friendRequest-container::-webkit-scrollbar {
+    width: 10px;
+    
+}
+
+.friendRequest-container::-webkit-scrollbar-thumb{
+    background : black;
+    border-radius: 10px;
+}
+.no-notifications{
+    font-style: oblique;
+    
+    margin-top: 8%;
+    color: rgb(119, 119, 119);
+}

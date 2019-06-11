@@ -1,0 +1,57 @@
+.bg-uploadPhoto{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.562);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3
+    
+    
+}
+.uploadPhoto-container{
+    width: 30em;
+    height: 20em;
+    background : white;
+    border-radius :4px;
+    position : relative;
+    color : black;
+    
+}
+.close-uploadPhoto{
+    color: rgba(0, 0, 0, 0.808);
+    position:absolute;
+    top : 0;
+    right: 14px;
+    font-size : 40px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.uploadPhoto-container button {
+    margin-top: 7%;
+    background: rgb(214, 212, 212) ;
+    border: solid grey 2px;
+    border-radius : 5px;
+}
+.uploadButton{
+    margin-bottom: 0em;
+}
+.uploadPhoto-container .ant-form-item-children{
+    justify-content: center;
+    text-align: center;
+}
+.uploadPhoto-container  input {
+    padding-left: 10px!important;
+    border:none;
+    border-bottom: rgb(100, 151, 218) 2px solid;
+    width:80%!important;
+    margin-left: 10%;
+}
+
+.uploadPhoto-container input:focus {
+    outline: 0px;
+}

@@ -1,0 +1,94 @@
+.userDetails{
+    margin-top: 0.3%;
+    border: solid black 1px;
+    background-color:white;
+    height: 10em;
+    width: 25em;
+    
+}
+.photoProfile-home{
+    margin-left: 3%;
+    
+}
+
+.photoHome{
+    width:100%;
+    max-height:100%;
+    position:absolute; 
+    left:0;
+    right:0;
+    top:0; 
+    bottom:0;
+    margin:auto;
+    
+    
+    
+}
+.photo-container{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 10%;
+    margin: auto;
+    height: 53em;
+    background: black;
+    justify-content: center;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.637);
+
+    
+}
+.listPhoto{
+    margin-top: -6%;
+}
+.photoDescription{
+    margin-top : 50px;
+}
+.ant-upload img{
+    width: 100%;
+    margin-top:-10px;
+}
+
+.ant-upload{
+    
+    margin-left: 40%;
+    margin-top: 10%;
+}
+
+.userDetails h2{
+    margin-top: 10%;
+    color: rgb(0, 130, 170);
+}
+.card-photo{
+    position: relative;
+    margin-top : 4%;
+    width: 45%;
+    margin-left: 25%;
+    height: 63em;
+    
+   
+}
+
+.photo-info {
+    position: absolute;
+    background: white;
+    padding: 4%;
+    bottom : 0%;
+    font-size: 1.5em;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.637);
+    width: 100%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+   
+    
+    
+}
+
+.photo-info p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: inline;
+    
+}
+

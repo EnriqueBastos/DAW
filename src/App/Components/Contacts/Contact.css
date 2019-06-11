@@ -1,0 +1,43 @@
+
+.contactGrid{
+    margin-left: 10%!important;
+    margin-top: 3%!important;
+}
+.contact{
+    margin-top : 2%;
+    margin-left: 5%;
+    border: solid black 1.5px;
+    border-radius: 6px;
+    background: white;
+}
+
+.contactName{
+    width: 100%;
+    
+}
+.contactName h2{
+    text-align: center;
+    
+    
+}
+
+.img-container-contact{
+    
+    width: 100%;
+    height: 20em;
+    border-bottom: solid black 1px;
+    position: relative;
+}
+
+.contactPhoto{
+    width: 100%;
+    max-height:100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin:auto; 
+    
+    
+}

@@ -1,0 +1,114 @@
+
+.form-comments textarea{
+   
+    width: 100%;
+    resize: none;
+    outline: none;
+    float: left;
+    border-radius: 0px;
+    font-size: 1.3em;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.24);
+    margin-bottom: -3%!important;
+    
+}
+
+.comment-bg .ant-form-item-children{
+    margin-right: 0px;
+}
+.form-comments{
+    margin-top:-6%!important;
+}
+
+.form-comments button{
+    height: 2.33em;
+    background: green;
+    border: none;
+    right:3px;
+    width: 100%;
+    float: right;
+    color: white;
+    font-size: 2em;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.24);
+    
+}
+.form-comments button:hover{
+    background-color: rgb(1, 97, 1);
+    color:rgba(255, 255, 255, 0.425);
+    cursor: pointer;
+}
+
+.comment-bg{
+    position: relative;
+    margin-top : 5%;
+    width: 50%;
+    margin-left: 25%;
+}
+.comment-bg .ant-form-explain{
+    font-size: 1.5em;
+    font-weight: 800;
+    color: red;
+    
+}
+.comment-container:last-child{
+    margin-bottom: 4%;
+    border : none;
+}
+
+
+.comment-container {
+    background: white;
+    width: 100%;
+    height: 8em;
+    margin-top: 2%;
+    border-bottom: rgba(59, 59, 59, 0.74) solid 0.7px;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.24);
+    overflow: auto;
+}
+.comment-container::-webkit-scrollbar {
+    width: 10px;
+    
+}
+
+.comment-container::-webkit-scrollbar-thumb{
+    background : rgba(0, 0, 0, 0.596);
+    border-radius: 2px;
+}
+
+
+.comment-container h2{
+    font-style: initial;
+    color: rgb(0, 130, 170)!important;
+}
+
+.comment-container p{
+    font-size: 1.2em;
+}
+.comment-container .ant-col{
+    padding: 3%;
+}
+
+
+
+.card-photo-details{
+    position: relative;
+    margin-top : 10%;
+    width: 50%;
+    margin-left: 25%;
+    height: 40em;
+}
+
+.user-title-photo{
+    background-color:white;
+    width: 50%;
+    margin-top:4.8%;
+    margin-bottom: 6%;
+    margin-left : 25%;
+    height: 5em;
+    word-break: break-all;
+    padding: 1%;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.24);
+}
+
+.user-title-photo h2{
+    color: rgb(0, 130, 170)!important;
+}

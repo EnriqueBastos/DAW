@@ -1,0 +1,143 @@
+.ChatBar{
+   position: absolute;
+    height: 30em;
+    width: 15%;
+    background: white;
+    right: 0.1%;
+    top:20%;
+
+}
+
+.ChatBar h3{
+    text-align: center;
+    font-size: 1.5em;
+    padding: 3%;
+    background: rgb(35, 153, 94);
+    color: rgb(1, 59, 1);
+}
+
+.ChatBar h4{
+    padding: 2%;
+    margin-left: 10%;
+    font-size: 1.5em;
+    width: 100%;
+}
+.list-chat-name:hover{
+    background: rgb(226, 225, 225);
+    cursor: pointer;
+}
+
+
+.conversation{
+    position: fixed;
+    right: 0.5%;
+    bottom: 0px;
+    width: 10%;
+    z-index: 4;
+    float: right;
+    
+}
+
+
+
+.messages{
+    display: none;
+    height: 25em;
+    padding: 10%;
+    margin-left: -9.1em;
+    background : white;
+    position: relative;
+    border: black solid 1px;
+    word-break: break-all;
+    
+    
+    
+}
+.message-text{
+    height: 90%;
+    overflow: auto;
+    padding: 5%;
+    
+}
+
+.input-messages{
+    position: absolute;
+    bottom: 1em;
+    width: 100%;
+    margin-left:0px; 
+    
+    height: 2em;
+    
+}
+.input-messages input{
+    
+    height: 2em!important;
+    width: 100%;
+    margin: 0
+}
+.input-messages button{
+    width: 3em;
+    height: 2.2em;
+    margin-top: 0.36em;
+    background: green;
+    border: solid green;
+}
+.userName-chat{
+    background: white;
+    font-size: 0.8em;
+    height: 100%;
+    padding: 3%;
+    cursor: pointer;
+    width: 100%;
+    float: left;
+    
+}
+.userName-chat img{
+    float: left;
+    width: 80%;
+    height: 1.7em;
+    margin-top: 30%!important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 100%;
+}
+.userName-chat h2{
+    float: left;
+    width: 100%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    font-size: 1.3em;
+    margin-top: 5%;
+}
+
+
+
+.input-messages .ant-form{
+    width: 17.5em;
+}
+
+.list-chat-name img  {
+    width: 1.3em;
+    height: 1.3em;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 100%;
+
+}
+.userName-chat{
+    font-size: 1.3em;
+}
+
+
+.chat-list-contacts{
+    overflow: auto;
+    height: 83%;
+    text-overflow: ellipsis;
+}
+

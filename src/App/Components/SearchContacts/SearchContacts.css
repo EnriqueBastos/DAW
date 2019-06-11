@@ -1,0 +1,63 @@
+.contact-result{
+    width: 40%;
+    margin-top : 4%;
+    margin-left: 8%;
+    background: white;
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.contact-result:last-child{
+    margin-bottom: 4%;
+}
+
+.no-result-contacts{
+    background: white!important;
+    text-align: center!important;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 7%;
+    border-radius: 5px;
+    font-size: 1.7em;
+    padding: 10%;
+}
+
+.contact-result-photo-container{
+    
+    height: 16em;
+    position: relative;
+    width: 40%;
+}
+
+.contact-result-photo{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 10%;
+    margin: auto;
+    background: black;
+    justify-content: center;
+    
+
+}
+
+.contact-result-info{
+    margin-left: 50%;
+    margin-top: 3%;
+}
+
+.contact-result-info button{
+    color:black;
+    margin-top: 6%;
+    width: 80%;
+    padding: 3%;
+    border-radius: 10px;
+    
+    border:black 3px solid ;
+    font-size: 1.2em;
+    font-weight: 700;
+    box-shadow: 10em;
+}
+

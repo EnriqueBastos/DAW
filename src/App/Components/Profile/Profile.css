@@ -1,0 +1,67 @@
+.profileGallery , 
+.profileDetails{
+    width: 50%;
+    margin-left: 25%;
+    margin-top : 1.5%;
+    background : white;
+    border: black solid 2px;
+    
+    
+}
+.profileGallery {
+    padding-bottom: 7%;
+}
+
+.profileGallery h1{
+    margin-left: 30%;
+    margin-top : 5%;
+    font-style: oblique;
+    color: rgba(5, 5, 5, 0.76);
+}
+.profileDetails{
+    padding: 3%;
+    
+}
+
+.imageProfile{
+    width: 30%;
+    height: 100%;
+    margin-top: 7.5%;
+    margin-left: 2.55%;
+    margin: none;
+    border-radius: 10px;
+    
+}
+
+
+.imageProfile:hover{
+    border: rgb(0, 140, 255) solid 0.8px;
+    cursor: pointer;
+}
+
+.photoProfile{
+    width: 80%!important;
+    
+}
+
+.description-profile{
+    font-style: oblique;
+    height: 10em;
+}
+
+.profileDetails button{
+    float: right;
+    background: rgb(199, 199, 199);
+    font-size: 1.5em;
+    padding: 1.5%;
+    width: 50%;
+    border: solid black 2.5px;
+    color : black;
+}
+
+.user-details-contact button{
+    float: left;
+    width: 40%;
+    font-size: 1.3em;
+    margin-left: 10px;
+}
