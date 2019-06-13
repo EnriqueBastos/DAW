@@ -21,10 +21,16 @@ class SettingsFormulary extends React.Component{
         super(props);
         this.state ={
             loading : false,
-            imageUrl : "data:image/png;base64," + this.props.profile.photoProfile
+            imageUrl :  this.props.profile.photoProfile
         }
     }
-    
+    componentDidUpdate(){
+        if(this.state.imageUrl !== this.props.profile.photoProfile){
+            this.setState({ 
+                imageUrl : this.props.profile.photoProfile
+            })
+        }
+    }
     handleSubmit = (e) => {
         
           e.preventDefault();
@@ -62,8 +68,6 @@ class SettingsFormulary extends React.Component{
 
       
       handleChange = info => {
-        
-        console.log("Ver info",info);
         if (info.file.status === 'uploading') {
           this.setState({ loading: true });
           return;
@@ -85,15 +89,16 @@ class SettingsFormulary extends React.Component{
 
         
 
-        const imageUrl = this.state.imageUrl;
+        const imageUrl = "data:image/png;base64," + this.state.imageUrl;
         const { getFieldDecorator } = this.props.form;
         
         return(
-            <React.Fragment>
+            <>
                 <h1>Ajustes usuario</h1>
+                <div className="settings-container-overflow">
                 <Form onSubmit={this.handleSubmit}>
                 <div className="change-value-settings changePhotoProfile">
-                    <p >Cambiar foto de perfil</p>
+                    <p>Cambiar foto de perfil</p>
                     <div>
                     <Upload
                         name="avatar"
@@ -157,7 +162,7 @@ class SettingsFormulary extends React.Component{
                     <p >Cambiar contraseña</p>
                     <Form.Item className="settings-column">
                             {getFieldDecorator('Password', {
-                                initialValue: '123',
+                                initialValue: this.props.profile.password,
                                 rules: [{ required: true, message: ' ' }],
                                 })(
 
@@ -228,9 +233,11 @@ class SettingsFormulary extends React.Component{
                     <button htmltype="submit">Guardar cambios</button>
                 </div>
                 </Form>
+                </div>
                 
                 
-            </React.Fragment>
+                
+            </>
             
         );
     }

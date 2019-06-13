@@ -30,7 +30,7 @@ import {
             else{
               message.success("Has iniciado sesion");
               localStorage.setItem("UserId", res.data);
-              window.location.href = 'http://localhost:3000/home';
+              window.location = "/home";
               
             }
               
@@ -70,12 +70,12 @@ import {
               </Form.Item>
               
               <Form.Item>
-                  {getFieldDecorator('remember', {
+                  {/* {getFieldDecorator('remember', {
                   valuePropName: 'checked',
                   initialValue: false,
                   })(
                   <Checkbox>Recordarme</Checkbox>
-                  )}
+                  )} */}
                   
                   <Button type="primary" htmlType="submit" className="login-form-button">
                   Log in

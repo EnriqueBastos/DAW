@@ -41,7 +41,7 @@ export default class UserDetails extends React.Component{
         }else{
             return (
                 <div className="userDetails" >
-                    <Row>
+                    <Row className="userDetails-row">
                         
                             
                                 <Col span={10}>

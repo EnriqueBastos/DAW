@@ -1,37 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route} from 'react-router-dom';
-
-import NavBar from './App/Shared/NavBar/NavBar';
+import {BrowserRouter, Route , Switch} from 'react-router-dom';
 import Login from './App/Components/Login/Login';
-import Home from "./App/Components/Home/Home";
-import Music from './App/Components/Music/Music';
-import ContactList from './App/Components/Contacts/ContactList.js';
-import Profile from './App/Components/Profile/Profile.js';
-import PhotoInfo from './App/Components/Photo/PhotoInfo';
-import SearchContacts from './App/Components/SearchContacts/SearchContacts';
+import Layout from './Layout';
 
 
-const App = () =>(
-            
-            <div>
-                <BrowserRouter>
-                <div>
-                        <Route exact path ="/" component={Login} />
-                        <Route exact path ="/home" component={Home} />
-                        <Route exact path ="/contacts/:name" component={SearchContacts} />
-                        <Route exact path ="/contacts" component={ContactList} />
-                        <Route exact path ="/music" component={Music}/>
-                        <Route exact path ="/music/:userId" component={Music} />
-                        <Route exact path ="/profile/:id" component={Profile} />
-                        <Route exact path = "/profile" component = {Profile} />
-                        <Route exact path = "/photo/:photoId" component = {PhotoInfo} />
-                </div>
-                </BrowserRouter>
-            </div>
-                
-               
-);
+        class App extends React.Component{
+                render (){
+                        return(
+                                        <BrowserRouter>
+                                                <Switch>
+                                                        <Route exact path ="/" component={Login} />
+                                                        <Route component ={Layout} />
+                                                </Switch>
+                                        </BrowserRouter>
+                                
+                                
+                        );
+                }
+        }
+        
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

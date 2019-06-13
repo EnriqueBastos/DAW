@@ -7,10 +7,10 @@ import {Link} from 'react-router-dom';
 
 
 const Contact = ({profile}) =>(
-    <div>
+    <>
 
                 
-        <Col className="gutter-row contact" span={5} key={profile.userId}>
+        <Col className="gutter-row contact" span={5} key={profile.userId} style={{padding : 0}}>
             <Link to ={"/profile/"+profile.userId} >
                 <div className="img-container-contact">
                     <img 
@@ -19,9 +19,6 @@ const Contact = ({profile}) =>(
                     src={profile.photoProfile ? "data:image/png;base64," + profile.photoProfile: defaultUserPhoto}
                     /> 
                 </div>
-                
-                
-                <br />
                 <div className ="contactName">
                     <h2>{profile.userName + " " + profile.userLastName}</h2>
                 </div>
@@ -29,6 +26,6 @@ const Contact = ({profile}) =>(
         </Col>
 
 
-    </div>
+    </>
 );
 export default Contact;

@@ -76,7 +76,7 @@
     margin-right: -0.9em;
 }
 .NavBar input{
-    margin-top: 1.4em!important;
+    margin-top: -1.4em!important;
     width: 15em!important;
     padding: 0!important;
     color: black!important;
@@ -88,4 +88,8 @@
   cursor: auto;
   float: left;
   font-size: 1.2em;
+}
+
+.NavBarItem button:hover{
+  color:blue;
 }

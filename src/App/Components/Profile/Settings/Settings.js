@@ -8,18 +8,16 @@ export default class Settings extends React.Component{
         var res = document.getElementById("settings-bg-container");
         
         if(res.style.display === "none" || res.style.display ===""){
-
             res.style.display = "flex";
-         }else{
-            
+        }else{
             res.style.display = "none";
-
         }
     }
     render(){
         return  (
-            <React.Fragment>
-                <button onClick = {this.handleClick}><Icon type="setting" />  Ajustes</button>
+            <>
+                {console.log("PRKIFEOEW" ,this.props.profile)}
+                <button onClick = {this.handleClick} className="settings-button"><Icon type="setting" /></button>
                 <div className="settings-bg-container" id="settings-bg-container">
                     <div className="settings-container" >
                     <div className="close-settings" onClick = {this.handleClick}>
@@ -28,7 +26,7 @@ export default class Settings extends React.Component{
                         <SettingsForm profile= {this.props.profile} handleSaveChanges = {this.props.handleSaveChanges}/>
                     </div>
                 </div>
-            </React.Fragment>
+            </>
         
         )
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import defaultUserPhoto from '../../../Images/defaultUserPhoto.png';
 import Settings from './Settings/Settings';
-import { Row, Col } from 'antd';
+import { Row, Col,Icon} from 'antd';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 
@@ -12,22 +12,30 @@ class ProfileDetails extends React.Component{
         
         this.handleClick = this.handleClick.bind(this);
         this.state = {
-            
+            userId : this.props.userId
         }
+        this.getProfileData = this.getProfileData.bind(this);
     }
     componentWillMount(){
-        
-        
-        
+        this.getProfileData();
+    }
+    componentDidUpdate(){
+        if(this.state.userId !== this.props.userId){
+            this.getProfileData();
+            this.setState({
+                userId : this.props.userId
+            })
+        }
+    }
+
+    getProfileData(){
         Axios.get("https://localhost:44310/api/user/GetProfile/"+this.props.userId)
         .then(res =>{
             this.setState({
                 profile : res.data
             });
         });
-        
     }
-   
     handleClick(){
         var contactDto = {
             UserId : localStorage.getItem("UserId"),
@@ -69,8 +77,14 @@ class ProfileDetails extends React.Component{
                             (
                             <React.Fragment>
                                 <div className="user-details-contact">
-                                    <Link to={"/music/" + this.props.userId}><button>Ver música</button></Link>
-                                    <button onClick={this.handleClick}>Borrar amigo</button> 
+                                    <Link to={"/music/" + this.props.userId}>
+                                        <button className="profile-music-button">
+                                            <Icon type="customer-service" className="profile-music-icon"/> Música
+                                        </button>
+                                    </Link>
+                                    <button onClick={this.handleClick} className="profile-delete-button" >
+                                        <Icon type="user-delete" className="profile-delete-icon"/> Borrar  
+                                    </button> 
                                     
                                 </div>
                                 

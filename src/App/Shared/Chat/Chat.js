@@ -1,16 +1,15 @@
 import React from 'react';
-import { Row, Col, Form ,Input } from 'antd';
+import { Row, Col, Form ,Input , Icon } from 'antd';
 import Axios from 'axios';
 import {Link} from 'react-router-dom';
 import defaultUserPhoto from '../../../Images/defaultUserPhoto.png';
-import {animateScroll as scroll} from 'react-scroll';
 
 class ChatMessages extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             numChats : this.props.numChats - 1,
-            marginRight : this.props.numChats !== 1 ? ((this.props.numChats - 1) * 10.5) + "%" : "0.10%",
+            marginRight : this.props.numChats !== 1 ? ((this.props.numChats - 1) * 5.5) + "%" : "0.10%",
             display : "block",
             messages : [],
             userChatDto : {
@@ -18,7 +17,7 @@ class ChatMessages extends React.Component{
                 ChatId : this.props.chatId
             }
         }
-        this.handleClick = this.handleClick.bind(this);
+        this.handleMinimize = this.handleMinimize.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleReadMessages = this.handleReadMessages.bind(this);
     }
@@ -29,7 +28,7 @@ class ChatMessages extends React.Component{
             messages[f].isSeen = true;
         }
     }
-    handleClick(){
+    handleMinimize(){
         if(this.state.display === "none"){
             this.setState({display : "block"});
             this.handleReadMessages(this.state.userChatDto);
@@ -97,8 +96,6 @@ class ChatMessages extends React.Component{
                 
             }
           });
-        
-        
     }
     render(){
 
@@ -108,13 +105,22 @@ class ChatMessages extends React.Component{
         return (
         <div className ="conversation" style={{marginRight : this.state.marginRight}}>
             <div className="messages" style ={{display : this.state.display}}>
+                <div className="chat-header">
+                    <h3>{this.props.userName}</h3>
+                    <button className="chat-header-options" style={{float : "left"}} onClick = {this.handleMinimize}>
+                        <Icon type="minus" />
+                    </button>
+                    <button className="chat-header-options">
+                        <Icon type="close" />
+                    </button>
+                </div>
                 <div className ="message-text">
                 {
                     this.state.messages.map( (message, index) =>{
                         var userId = message.userId.toString();
                         if(userId === localStorage.getItem("UserId")){
                             return (
-                                <p key ={index}><Link to ={"/profile/" + message.userId}>Yo</Link>{" : " + message.messageText}</p>
+                                <p key ={index}><label style={{fontWeight : "700"}}>Yo</label>{" : " + message.messageText}</p>
                             );
                         }else{
                             return (
@@ -139,30 +145,21 @@ class ChatMessages extends React.Component{
                             </Form.Item>
                         </Col>
                         <Col  span ={4}>
-                            <button htmltype="submit"></button>
+                            <button htmltype="submit"><Icon type="enter" style={{fontSize : "1.5em" , color : "white"}}/></button>
                         </Col>
                     </Form>
                 </Row>
+            </div>
             
+            <div className="img-chat" onClick = {this.handleMinimize}>
+                {
+                    this.props.photoProfile ?
+                    <img alt ="photoProfile" src = {"data:image/png;base64," + this.props.photoProfile } /> :
+                    <img alt ="photoProfile" src = {defaultUserPhoto} />
+                }
             </div>
-            <div className="userName-chat" onClick = {this.handleClick}>
-                <Row>
-                    <Col span = {6}>
-                        {
-                            this.props.photoProfile ?
-                            <img alt ="photoProfile" src = {"data:image/png;base64," + this.props.photoProfile } /> :
-                            <img alt ="photoProfile" src = {defaultUserPhoto} />
-                        }
-                    </Col>
-                    <Col span = {18}>
-                        <h2>
-                            { " " + this.props.userName}
-                        </h2>
-                    </Col>
-
-                </Row>
-                
-            </div>
+           
+            <div className="chat-design" style ={{display : this.state.display}}></div>
         </div>
         );
     }

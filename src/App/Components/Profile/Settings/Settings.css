@@ -7,6 +7,7 @@
     background: rgba(0, 0, 0, 0.315);
     height: 100%;
     justify-content: center;
+    z-index: 5;
 }
 
 .settings-container{
@@ -15,19 +16,21 @@
     margin-top: 1%;
     width: 40%;
     height: 80%;
-    overflow: auto;
     padding: 1.9%;
     
-    
+}
+.settings-container-overflow {
+    height: 80%;
+    width: 100%;
+    overflow: auto;
 }
 
-
-.settings-container::-webkit-scrollbar {
+.settings-container-overflow::-webkit-scrollbar {
     width: 10px;
     
 }
 
-.settings-container::-webkit-scrollbar-thumb{
+.settings-container-overflow::-webkit-scrollbar-thumb{
     background : rgba(0, 44, 95, 0.87);
     border-radius: 10px;
 }
@@ -49,7 +52,7 @@
 
 .change-value-settings{
     padding: 4%;
-    
+    width: 95%;
     border-bottom: solid rgba(219, 216, 216, 0.582) 1px;
     border-top:solid rgba(219, 216, 216, 0.582) 1px;
     word-wrap: break-word;
@@ -88,16 +91,18 @@
     width: 30%;
     padding: 1.5%;
     margin-top: 2%;
-    background: rgb(224, 224, 224);
-    border : grey solid;
-    color:rgb(71, 71, 71);
+    background: rgb(65, 146, 45);
+    border : none;
+    color:white;
     margin-right: 2%;
     font-size: 1.2em;
+    font-weight: 400;
+    margin-left: 15%;
 }
 
 .settings-container button:hover{
     cursor: pointer;
-    background: rgb(128, 133, 128);
+    background: rgb(43, 95, 30);
     color:white;
 }
 
@@ -140,3 +145,16 @@
     background: black;
 }
 
+.settings-button{
+    float: right;
+    background: none;
+    font-size: 2em;
+    padding: 1.5%;
+    width: 13%;
+    border:none;
+    transition: 1.7s;
+}
+
+.settings-button:hover{
+    transform:rotate(300deg);
+}

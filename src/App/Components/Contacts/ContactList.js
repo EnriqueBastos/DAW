@@ -2,8 +2,6 @@ import React from 'react';
 import Axios from 'axios';
 import Contact from './Contact.js';
 import {Row} from 'antd';
-import NavBar from '../../Shared/NavBar/NavBar.js';
-import ChatBar from '../../Shared/Chat/ChatBar.js';
 
 
 
@@ -19,13 +17,7 @@ export default class ContactList extends React.Component{
         const userId = localStorage.getItem("UserId"); 
         Axios.get("https://localhost:44310/api/contacts/getFriends/"+userId).then(res =>{
             this.setState({
-                contacts : <div>
-                                <Row gutter={8} className ="contactGrid">
-                                    {res.data.map((item , index) =>
-                                        <Contact profile ={item} key ={index}/>
-                                    )}
-                                </Row>
-                            </div>
+                contacts : res.data
             });
 
         });
@@ -35,9 +27,18 @@ export default class ContactList extends React.Component{
        
         return(
             <div>
-                <NavBar />
-                <ChatBar />
-                {this.state.contacts}
+                {
+                    this.state.contacts.length > 0 ?
+                    <Row gutter={8} className ="contactGrid">
+                        {this.state.contacts.map((item , index) =>
+                            <Contact profile ={item} key ={index}/>
+                        )}
+                    </Row> :
+                    <div className="no-contacts">
+                        <h1>No tienes amigos agregados</h1>
+                    </div>
+                }
+                
             </div>
             
             

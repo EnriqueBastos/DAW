@@ -1,7 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
 import ContactResult from './ContactResult.js';
-import NavBar from '../../Shared/NavBar/NavBar';
 import { message } from 'antd';
 
 export default class SearchContacts extends React.Component{
@@ -12,8 +11,13 @@ export default class SearchContacts extends React.Component{
         }
         this.sendFriendRequest = this.sendFriendRequest.bind(this);
     }
-
     componentWillMount(){
+        this.getContacts();
+    }
+    componentDidUpdate(){
+        this.getContacts();
+    }
+    getContacts(){
         const searchContactDto = {
             UserId : localStorage.getItem("UserId"),
             UserName : this.props.match.params.name
@@ -59,7 +63,6 @@ export default class SearchContacts extends React.Component{
         if(this.state.contacts.length > 0){
             return (
                 <div>
-                    <NavBar />
                     {
                         this.state.contacts.map((contact , index) => {
                             return <ContactResult contact = {contact}  key = {index} sendFriendRequest ={this.sendFriendRequest}/>
@@ -69,7 +72,6 @@ export default class SearchContacts extends React.Component{
                  );
         }else{
             return (<React.Fragment>
-                        <NavBar/>
                         <div  className ="no-result-contacts">
                             <h1>No se han encontrado usuarios con el nombre : {this.props.match.params.name}</h1>
                         </div>

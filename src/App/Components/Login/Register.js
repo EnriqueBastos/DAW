@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {
-    Drawer, Form, Button, Col, Row, Input,  DatePicker,
+    Drawer, Form, Button, Col, Row, Input,  DatePicker,message ,Select 
   } from 'antd';
 import Axios from 'axios';
 
@@ -14,18 +14,27 @@ import Axios from 'axios';
     handleSubmit = (e)=> {
       e.preventDefault();
       this.props.form.validateFieldsAndScroll((err, values) => {
-        debugger;
+        
         if (!err) {
-          var loginDto = {
-            Email : values.Email,
-            Password : values.Password
-          }
-         
-          Axios.post('https://localhost:44310/api/user/AddUser',values).then(res =>{
-            Axios.get('https://localhost:44310/api/User/getUserId',loginDto).then(response =>{
-              localStorage.setItem("UserId",res.data);
-              this.props.match.history.push("/home");
-            })
+            const profile = {
+              Name : values.Name,
+              LastName : values.LastName,
+              Email : values.Email,
+              Password : values.Password,
+              DateBirthday : values.DateBirthDay,
+              Private : values.Private === "public" ? false : true
+            }
+           Axios.post('https://localhost:44310/api/user/AddUser',profile).then(res =>{
+            if(res.data === -1){
+              message.error("Ya existe un usuario con este email");
+            }
+            else{
+              localStorage.setItem("UserId" , res.data);
+              message.success("Usuario creado");
+              this.props.history.push("/home");
+              
+            }
+            
           });
           
 
@@ -76,8 +85,6 @@ import Axios from 'axios';
                     )}
                   </Form.Item>
                 </Col>
-              </Row>
-              <Row gutter={16}>
               <Col span={12}>
                 <Form.Item label="Email">
                     {getFieldDecorator('Email', {
@@ -101,8 +108,6 @@ import Axios from 'axios';
                   </Form.Item>
                 </Col>
                 
-              </Row>
-              <Row gutter={16}>
                 <Col span={12}>
                   <Form.Item label="Contraseña">
                     {getFieldDecorator('Password', {
@@ -112,7 +117,7 @@ import Axios from 'axios';
                     )}
                   </Form.Item>
                 </Col>
-                <Col span={12}>
+                {/* <Col span={12}>
                   <Form.Item label="Color de la aplicacion">
                     {getFieldDecorator('Background-App', {
                       rules: [{ required: true, message: 'Introduzca color' }],
@@ -120,21 +125,19 @@ import Axios from 'axios';
                         <Input type="color"  />
                     )}
                   </Form.Item>
-                </Col>
+                </Col> */}
                
-              </Row>
-              <Row gutter={16}>
                 <Col span={12}>
-                    {/*<Form.Item label="Tipo de cuenta">
+                    <Form.Item label="Tipo de cuenta">
                       {getFieldDecorator('Private', {
                         rules: [{ required: true, message: 'Elija el tipo de cuenta' }],
                       })(
                         <Select placeholder="Pública / Privada">
-                          <Option value="public">Pública</Option>
-                          <Option value="private">Privada</Option>
+                          <Select.Option value="public">Pública</Select.Option>
+                          <Select.Option value="private">Privada</Select.Option> 
                         </Select>
                       )}
-                    </Form.Item>*/}
+                    </Form.Item>
                   </Col>
               </Row>
               <br/>

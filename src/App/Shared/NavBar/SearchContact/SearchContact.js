@@ -1,5 +1,6 @@
 import React from 'react';
 import {Input , Button , Icon, Form } from 'antd';
+import {withRouter} from 'react-router-dom';
 
 export class Search extends React.Component{
     
@@ -7,11 +8,8 @@ export class Search extends React.Component{
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err,values) =>{
             if(!err){
-                document.location.href ='/contacts/'+values.userName;
-                
+                this.props.history.push("/contacts/" + values.userName);
             }
-            
-            
         });
     }
     render(){
@@ -50,4 +48,4 @@ export class Search extends React.Component{
 
 const SearchContact = Form.create({ name: 'searchContact' })(Search);
 
-export default SearchContact;
+export default withRouter(SearchContact);

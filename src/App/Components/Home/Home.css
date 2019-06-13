@@ -1,13 +1,14 @@
 .userDetails{
     margin-top: 0.3%;
-    border: solid black 1px;
+    margin-top: 1%;
+    margin-left: 0.25%;
     background-color:white;
     height: 10em;
     width: 25em;
     
 }
 .photoProfile-home{
-    margin-left: 3%;
+    margin-left: 7%;
     
 }
 
@@ -20,10 +21,8 @@
     top:0; 
     bottom:0;
     margin:auto;
-    
-    
-    
 }
+
 .photo-container{
     position: absolute;
     width: 100%;
@@ -57,7 +56,6 @@
 }
 
 .userDetails h2{
-    margin-top: 10%;
     color: rgb(0, 130, 170);
 }
 .card-photo{
@@ -66,8 +64,10 @@
     width: 45%;
     margin-left: 25%;
     height: 63em;
-    
-   
+}
+
+.card-photo:last-child{
+    margin-bottom: 2%;
 }
 
 .photo-info {
@@ -90,5 +90,9 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     display: inline;
     
+}
+
+.userDetails-row .ant-col{
+    margin-top: -1em;
 }
 

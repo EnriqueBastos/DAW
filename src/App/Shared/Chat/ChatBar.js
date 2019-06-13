@@ -5,8 +5,9 @@ import Chat from  './Chat';
 import {Badge, Col , Row} from 'antd';
 import { HubConnectionBuilder } from '@aspnet/signalr';
 import defaultUserPhoto from '../../../Images/defaultUserPhoto.png';
+import {withRouter} from 'react-router-dom';
 
-export default class ChatBar extends React.Component{
+class ChatBar extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -21,11 +22,17 @@ export default class ChatBar extends React.Component{
     }
 
     
+    componentWillMount = () => {
+        if(!localStorage.getItem("UserId")){
+            this.props.history.push("/");
+        }else{
+            this.getConnetction();
+        }
+    }
+    
 
-    componentDidMount = ()  => {
-
+    getConnetction = () => {
         Axios.get("https://localhost:44310/api/Chat/GetListChat/" + localStorage.getItem("UserId")).then(res =>{
-            console.log(res);
             this.setState({
                 chats : res.data
             })
@@ -46,8 +53,6 @@ export default class ChatBar extends React.Component{
                 }
                 this.setState({chats});
             })
-
-        
     }
 
     handleReadMessages(UserChatDto){
@@ -63,7 +68,7 @@ export default class ChatBar extends React.Component{
 
 
     }
-    
+
     handleClickUser(index){
         var chatOpened = this.state.chatOpened;
         var chat = {
@@ -79,21 +84,17 @@ export default class ChatBar extends React.Component{
                 isRepeated = true;
             }
         });
+
         if(!isRepeated){
             chatOpened.push(chat);
             this.setState({
                 chatOpened : chatOpened
             });
-            
-            
         }
         
     }
     
     render(){
-
-        
-
         return(
             <React.Fragment>
                 <div className="ChatBar">
@@ -146,3 +147,5 @@ export default class ChatBar extends React.Component{
         );
     }
 }
+
+export default withRouter(ChatBar);
