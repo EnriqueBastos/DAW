@@ -7,7 +7,7 @@ import Axios from 'axios';
 import {withRouter} from 'react-router-dom';
 
 import {
-    Form, Icon, Input, Button, Checkbox,message
+    Form, Icon, Input, Button,message
   } from 'antd';
 
   
@@ -53,7 +53,7 @@ import {
         <div className = "loginForm">
           <img src = {logo} alt ="logo" />
           <div className="loginInput">
-            <Form onSubmit={this.handleSubmit} className="login-form">
+            <Form onSubmit={this.handleSubmit}>
               <Form.Item>
                   {getFieldDecorator('Email', {
                   rules: [{ required: true, message: 'Introduce tu usuario' }],

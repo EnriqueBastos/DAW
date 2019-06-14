@@ -6,8 +6,6 @@
     width: 100%;
     background-color: #333;
     font-size: 1.3em;
-    
-
 }
 .NavBar .logo{
     
@@ -57,11 +55,10 @@
 }
 
 .NavBar i{
-    
     margin-right: 10px;
 }
 .NavBarButton{
-    font-size: 1em!important;
+    font-size: 1em;
     margin-top : -10px!important;
     
     color:white!important;
@@ -76,12 +73,13 @@
     margin-right: -0.9em;
 }
 .NavBar input{
-    margin-top: -1.4em!important;
+    margin-top: 1.4em!important;
     width: 15em!important;
-    padding: 0!important;
+    padding: 3%!important;
     color: black!important;
     text-align: left!important;
     height: 30px!important;
+    margin-bottom: 3em;
 }
 .NavBar form li:last-child{
   background:none;
@@ -90,6 +88,12 @@
   font-size: 1.2em;
 }
 
-.NavBarItem button:hover{
-  color:blue;
+@media only screen and (max-width: 1500px) {
+  .NavBar{
+    font-size: 1.1em;
+    content: icon;
+  }
+  .NavBarButton {
+    font-size: 0.9em!important;
+  }
 }

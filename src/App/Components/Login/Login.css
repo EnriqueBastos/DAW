@@ -4,11 +4,10 @@ body{
 .loginForm{
     position: absolute;
     right: 0px;
-    width: 34em;
+    width: 31em;
     height: 100%;
     padding: 30px;
     margin-right: 0;
-    
     background-color: white;
     text-align: center;
 }
@@ -16,15 +15,7 @@ body{
     margin-top: 16%;
     
 }
-table{
-    text-align: center;
-    margin-left: 5%;
-    margin-right: 5%;
-}
 
-.ant-form-item-children{
-    margin-right: 20%;
-}
 .ant-form-explain{
     text-align: left;
 }
@@ -33,3 +24,26 @@ img{
     width: 60%;
     margin-bottom: -3em;
 }
+
+.ant-drawer-body button{
+    margin-left: 40%;
+}
+.ant-drawer-body button:last-child{
+    margin-left: 2%;
+}
+
+@media only screen and (max-width: 980px) {  
+  .ant-drawer-content-wrapper{
+    width: 100% !important;   
+    }
+}
+
+@media only screen and (max-width: 500px) {  
+    .loginForm{
+        width: 100%;
+    }
+    .ant-drawer-body button{
+        margin-left: 36%;
+    }
+    
+  }  

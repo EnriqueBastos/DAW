@@ -20,21 +20,15 @@ class SettingsFormulary extends React.Component{
     constructor(props){
         super(props);
         this.state ={
-            loading : false,
-            imageUrl :  this.props.profile.photoProfile
+            loading : false
         }
     }
-    componentDidUpdate(){
-        if(this.state.imageUrl !== this.props.profile.photoProfile){
-            this.setState({ 
-                imageUrl : this.props.profile.photoProfile
-            })
-        }
-    }
+    
     handleSubmit = (e) => {
         
           e.preventDefault();
-          var ImageBytes = this.state.imageUrl.split(",")[1];
+          
+          var ImageBytes = this.state.imageUrl ? this.state.imageUrl.split(",")[1] : this.props.profile.photoProfile;
             
           this.props.form.validateFieldsAndScroll((err, values) => {
             
@@ -89,7 +83,7 @@ class SettingsFormulary extends React.Component{
 
         
 
-        const imageUrl = "data:image/png;base64," + this.state.imageUrl;
+        const imageUrl = this.state.imageUrl ? this.state.imageUrl : "data:image/png;base64," + this.props.profile.photoProfile;
         const { getFieldDecorator } = this.props.form;
         
         return(

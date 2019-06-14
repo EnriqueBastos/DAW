@@ -9,7 +9,6 @@ class ChatMessages extends React.Component{
         super(props);
         this.state = {
             numChats : this.props.numChats - 1,
-            marginRight : this.props.numChats !== 1 ? ((this.props.numChats - 1) * 5.5) + "%" : "0.10%",
             display : "block",
             messages : [],
             userChatDto : {
@@ -61,9 +60,8 @@ class ChatMessages extends React.Component{
             }
 
         });
-        
-        
     }
+
     componentDidUpdate(){
         var messagesDiv = document.getElementById("chatId" + this.props.chatId);
         if(messagesDiv)
@@ -99,20 +97,20 @@ class ChatMessages extends React.Component{
     }
     render(){
 
-        
+        var marginRight = this.props.numChats !== 1 ? ((this.props.numChats - 1) * 5.5) + "%" : "0.10%";
 
         const {getFieldDecorator} = this.props.form;
         return (
-        <div className ="conversation" style={{marginRight : this.state.marginRight}}>
+        <div className ="conversation" style={{marginRight : marginRight}}>
             <div className="messages" style ={{display : this.state.display}}>
                 <div className="chat-header">
                     <h3>{this.props.userName}</h3>
                     <button className="chat-header-options" style={{float : "left"}} onClick = {this.handleMinimize}>
                         <Icon type="minus" />
                     </button>
-                    <button className="chat-header-options">
+                    {/* <button className="chat-header-options" onClick = {() => this.props.handleCloseChat(this.props.chatId)}>
                         <Icon type="close" />
-                    </button>
+                    </button> */}
                 </div>
                 <div className ="message-text">
                 {
@@ -145,7 +143,7 @@ class ChatMessages extends React.Component{
                             </Form.Item>
                         </Col>
                         <Col  span ={4}>
-                            <button htmltype="submit"><Icon type="enter" style={{fontSize : "1.5em" , color : "white"}}/></button>
+                            <button htmltype="submit"><Icon type="enter" style={{fontSize : "1.5em" }}/></button>
                         </Col>
                     </Form>
                 </Row>

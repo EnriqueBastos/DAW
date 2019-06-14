@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import './Chat.css';
 import Chat from  './Chat';
-import {Badge, Col , Row} from 'antd';
+import {Badge, Col , Row, message} from 'antd';
 import { HubConnectionBuilder } from '@aspnet/signalr';
 import defaultUserPhoto from '../../../Images/defaultUserPhoto.png';
 import {withRouter} from 'react-router-dom';
@@ -16,6 +16,7 @@ class ChatBar extends React.Component{
             hubConnection : null
         }
         this.handleReadMessages = this.handleReadMessages.bind(this);
+        this.handleCloseChat = this.handleCloseChat.bind(this);
         this.connection = new HubConnectionBuilder()
         .withUrl("https://localhost:44310/SignalR/ChatMessages")
         .build();
@@ -25,6 +26,7 @@ class ChatBar extends React.Component{
     componentWillMount = () => {
         if(!localStorage.getItem("UserId")){
             this.props.history.push("/");
+            message.error("Debes iniciar sesión");
         }else{
             this.getConnetction();
         }
@@ -54,7 +56,13 @@ class ChatBar extends React.Component{
                 this.setState({chats});
             })
     }
-
+    handleCloseChat(chatId){
+        var chatOpened = this.state.chatOpened;
+        var newChatsOpened = chatOpened.filter(x => x.chatId !== chatId);
+        this.setState({
+            chatOpened : newChatsOpened
+        })
+    }
     handleReadMessages(UserChatDto){
         Axios.post("https://localhost:44310/api/Chat/ReadMessagesChat" , UserChatDto).then(res =>{
             var chats = this.state.chats;
@@ -126,19 +134,21 @@ class ChatBar extends React.Component{
                     }
                     </div>
                 </div>
+                {console.log(this.state.chatOpened)}
                 
                     {
                         this.state.chatOpened.map(
                             (chat , index) =>{
                                 return <Chat 
-                                key = {index} 
-                                chatId = {chat.chatId}
-                                userName = {chat.userName} 
-                                photoProfile = {chat.photoProfile}
-                                numChats = {this.state.chatOpened.length} 
-                                connection = {this.connection}
-                                handleReadMessages = {this.handleReadMessages}
-                                />
+                                        key = {index} 
+                                        chatId = {chat.chatId}
+                                        userName = {chat.userName} 
+                                        photoProfile = {chat.photoProfile}
+                                        numChats = {index + 1} 
+                                        connection = {this.connection}
+                                        handleReadMessages = {this.handleReadMessages}
+                                        handleCloseChat = {this.handleCloseChat}
+                                        />
                             } 
                         )
                     }

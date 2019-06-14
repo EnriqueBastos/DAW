@@ -43,12 +43,6 @@
     width: 50%;
     margin-left: 25%;
 }
-.comment-bg .ant-form-explain{
-    font-size: 1.5em;
-    font-weight: 800;
-    color: red;
-    
-}
 .comment-container:last-child{
     margin-bottom: 4%;
     border : none;
@@ -111,4 +105,16 @@
 
 .user-title-photo h2{
     color: rgb(0, 130, 170)!important;
+}
+
+.delete-photo-button{
+    color:white;
+    background: none;
+    border:none;
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+.user-title-photo:hover> .ant-row .ant-col-1 .delete-photo-button{
+    color:red;
 }

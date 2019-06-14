@@ -43,10 +43,11 @@ export default class UploadPhotoButton extends React.Component{
                         Subir foto
             </Button>
             <div className="bg-uploadPhoto" id="uploadPhoto" >
+                <button onClick = {this.handleClick} className="close-upload-photo">
+                    <Icon type="close" />
+                </button>
                 <div className="uploadPhoto-container">
-                    <div className="close-uploadPhoto" onClick = {this.handleClick}>
-                        +
-                    </div>
+                    
                     <UploadPhotoInputFile/>
                     
                     

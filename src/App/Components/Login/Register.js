@@ -57,7 +57,7 @@ import Axios from 'axios';
     render() {
       const { getFieldDecorator } = this.props.form;
       return (
-        <div>
+        <div className="register">
           <Button type="link" onClick={this.showDrawer}>
             ¡ Registrate ahora !
           </Button>
@@ -143,7 +143,7 @@ import Axios from 'axios';
               <br/>
               
               
-              <Button onClick={this.handleSubmit} type="primary" htmlType ="submit" style={{ marginRight: 20, marginLeft: 270,marginTop:50 }}>
+              <Button onClick={this.handleSubmit} type="primary" htmlType ="submit" >
                 Crear
               </Button>
               <Button onClick={this.onClose} >

@@ -52,7 +52,7 @@ export class CommentList extends React.Component {
                                             rules: [
                                                 {
                                                 required: true,
-                                                message: 'Introduce commentario!',
+                                                message: ' ',
                                                 },
                                             ],
                                             })(<TextArea className="comment-text"  placeholder ="Introduce comentario..."/>)}

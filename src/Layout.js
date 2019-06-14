@@ -5,7 +5,7 @@ import Home from "./App/Components/Home/Home";
 import Music from './App/Components/Music/Music';
 import ContactList from './App/Components/Contacts/ContactList.js';
 import Profile from './App/Components/Profile/Profile.js';
-import PhotoInfo from './App/Components/Photo/PhotoInfo';
+import Photo from './App/Components/Photo/Photo';
 import SearchContacts from './App/Components/SearchContacts/SearchContacts';
 import ChatBar from './App/Shared/Chat/ChatBar';
 
@@ -23,7 +23,7 @@ const Layout = () => (
                         <Route exact path ="/music/:userId" component={Music} />
                         <Route exact path ="/profile/:id" component={Profile} />
                         <Route exact path = "/profile" component = {Profile} />
-                        <Route exact path = "/photo/:photoId" component = {PhotoInfo} />
+                        <Route exact path = "/photo/:photoId" component = {Photo} />
         </Switch>
     </div>
     </div>
