@@ -57,6 +57,7 @@ class Photo extends React.Component{
             this.setState({
                  numLikes : numLikes + 1,
                  isLike
+                 
                 })
         });
     }
