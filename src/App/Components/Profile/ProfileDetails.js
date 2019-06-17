@@ -49,6 +49,7 @@ class ProfileDetails extends React.Component{
     handleSaveChanges(profile){
         
         Axios.post("https://localhost:44310/api/user/editUser",profile).then(res=>{
+            localStorage.setItem("BackgroundApp", profile.BackgroundApp);
             document.location.reload();
         });
     }

@@ -16,7 +16,6 @@ export default class Settings extends React.Component{
     render(){
         return  (
             <>
-                {console.log("PRKIFEOEW" ,this.props.profile)}
                 <button onClick = {this.handleClick} className="settings-button"><Icon type="setting" /></button>
                 <div className="settings-bg-container" id="settings-bg-container">
                     <div className="settings-container" >

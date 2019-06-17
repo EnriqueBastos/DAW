@@ -47,7 +47,6 @@
     border:none;
     border-bottom: rgb(100, 151, 218) 2px solid;
     width:80%!important;
-    margin-left: 10%;
 }
 
 .uploadPhoto-container input:focus {
@@ -65,17 +64,15 @@
 }
 
 .ant-upload.ant-upload-select-picture-card{
-    width: 28%;
+    width: 26%;
 }
 @media only screen and (max-width: 1500px) {
     .uploadPhoto-container{
         height: 28em;
     }
     .close-upload-photo{
-        
-    top: 17%;
+        top: 17%;
     }
-    
   }
   
   @media only screen and (max-width: 1155px) {
@@ -84,7 +81,6 @@
         
     }
     .close-upload-photo{
-        
         top: 16%;
         }
     .uploadPhoto-container .ant-upload{

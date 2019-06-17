@@ -19,26 +19,22 @@ import {
       e.preventDefault();
       this.props.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
-          
-          Axios.post('https://localhost:44310/api/User/getUserId', values)
-          .then(res =>{
-            console.log(res.data);
+            Axios.post('https://localhost:44310/api/User/getUserId', values)
+            .then(res =>{
+                console.log(res.data);
 
-            if(res.data === -1){
-              message.error("Has introducido mal los datos");
-            }
-            else{
-              message.success("Has iniciado sesion");
-              localStorage.setItem("UserId", res.data);
-              window.location = "/home";
-              
-            }
-              
-
-          }
-
-             
-            );
+                if(res.data.userId === -1){
+                  message.error("Has introducido mal los datos");
+                }
+                else{
+                  message.success("Has iniciado sesion");
+                  localStorage.setItem("UserId", res.data.userId);
+                  localStorage.setItem("BackgroundApp", res.data.backgroundApp);
+                  
+                  window.location = "/home";
+                }
+                }
+              );
         }
       });
     }

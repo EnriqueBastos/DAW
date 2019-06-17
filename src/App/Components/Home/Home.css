@@ -34,9 +34,6 @@
     height: 53em;
     background: black;
     justify-content: center;
-    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.637);
-
-    
 }
 .listPhoto{
     margin-top: -6%;
@@ -74,16 +71,17 @@
     position: absolute;
     background: white;
     padding: 4%;
-    bottom : 0%;
+    bottom : 2%;
     font-size: 1.5em;
-    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.637);
     width: 100%;
     overflow:hidden;
     white-space:nowrap;
     text-overflow: ellipsis;
-   
-    
-    
+}
+.photo-info .ant-row .ant-col{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
 }
 
 .photo-info p{
@@ -95,4 +93,8 @@
 .userDetails-row .ant-col{
     margin-top: -1em;
 }
+.button-like{
+    background: none;
+    border:none;
 
+}

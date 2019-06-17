@@ -19,6 +19,7 @@ class ChatMessages extends React.Component{
         this.handleMinimize = this.handleMinimize.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleReadMessages = this.handleReadMessages.bind(this);
+        this.getAllMessages = this.getAllMessages.bind(this);
     }
     handleReadMessages(){
         this.props.handleReadMessages(this.state.userChatDto);
@@ -36,11 +37,29 @@ class ChatMessages extends React.Component{
         }
     }
     componentWillMount(){
-        
         this.handleReadMessages(this.state.userChatDto);
     }
-
     componentDidMount(){
+        this.getAllMessages();
+    }
+    componentDidUpdate(){
+        var messagesDiv = document.getElementById("chatId" + this.props.chatId);
+        if(messagesDiv)
+            messagesDiv.scrollIntoView();
+        document.getElementsByClassName("input-chat")[this.state.numChats].value = "";
+         if(this.props.chatId !== this.state.userChatDto.ChatId ){
+         this.getAllMessages();
+         var userChatDto = {
+            UserId : localStorage.getItem("UserId"),
+            ChatId : this.props.chatId
+         }
+            this.setState({
+                userChatDto : userChatDto
+            });
+         }
+    }
+
+    getAllMessages(){
         Axios.get("https://localhost:44310/api/Chat/GetMessagesChat/" + this.props.chatId).then( res =>{
             this.setState({
                 messages : res.data
@@ -62,12 +81,7 @@ class ChatMessages extends React.Component{
         });
     }
 
-    componentDidUpdate(){
-        var messagesDiv = document.getElementById("chatId" + this.props.chatId);
-        if(messagesDiv)
-            messagesDiv.scrollIntoView();
-        document.getElementsByClassName("input-chat")[this.state.numChats].value = "";
-    }
+    
 
     handleSubmit  = e => {
         e.preventDefault();
@@ -108,9 +122,9 @@ class ChatMessages extends React.Component{
                     <button className="chat-header-options" style={{float : "left"}} onClick = {this.handleMinimize}>
                         <Icon type="minus" />
                     </button>
-                    {/* <button className="chat-header-options" onClick = {() => this.props.handleCloseChat(this.props.chatId)}>
+                    <button className="chat-header-options" onClick = {() => this.props.handleCloseChat(this.props.chatId)}>
                         <Icon type="close" />
-                    </button> */}
+                    </button> 
                 </div>
                 <div className ="message-text">
                 {

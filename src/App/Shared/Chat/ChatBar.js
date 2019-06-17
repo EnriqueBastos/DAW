@@ -28,12 +28,13 @@ class ChatBar extends React.Component{
             this.props.history.push("/");
             message.error("Debes iniciar sesión");
         }else{
-            this.getConnetction();
+            this.getConnection();
+            document.body.style.backgroundColor = localStorage.getItem("BackgroundApp");
         }
     }
     
 
-    getConnetction = () => {
+    getConnection = () => {
         Axios.get("https://localhost:44310/api/Chat/GetListChat/" + localStorage.getItem("UserId")).then(res =>{
             this.setState({
                 chats : res.data

@@ -4,6 +4,7 @@ export default class LogOut extends React.Component{
 
     handleClick(){
         localStorage.removeItem("UserId");
+        localStorage.removeItem("BackgroundApp");
         window.location.href='../../';
     }
 

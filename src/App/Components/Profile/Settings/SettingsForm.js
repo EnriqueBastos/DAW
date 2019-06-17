@@ -4,6 +4,8 @@ import {
 } from 'antd';
 import defaultUserPhoto from '../../../../Images/defaultUserPhoto.png';
 import moment from 'moment';
+import colours from '../../../Functions/Colours';
+import Axios from 'axios';
 
 
   
@@ -41,6 +43,7 @@ class SettingsFormulary extends React.Component{
                     Password : values.Password,
                     Description : values.Description,
                     DateBirthday : values.DateBirthDay,
+                    BackgroundApp : values.BackgroundApp,
                     PhotoProfile : ImageBytes,
                     Private : values.Private === "public" ? false : true
 
@@ -74,10 +77,16 @@ class SettingsFormulary extends React.Component{
                   loading: false,
                 }),
               );
-          
         }
-    
       };
+      handleDeleteUser(){
+          var userDto = {
+              Id : parseInt(localStorage.getItem("UserId"))
+          }
+          Axios.post("https://localhost:44310/api/user/deleteuser" , userDto).then( () =>{
+            window.location.href='../../';
+          });
+      }
 
     render(){
 
@@ -187,7 +196,6 @@ class SettingsFormulary extends React.Component{
                                     }}>
                                     
                                     </textarea>
-
                             )}
                     </Form.Item>
                     
@@ -209,6 +217,20 @@ class SettingsFormulary extends React.Component{
                     </Form.Item>
                 </div>
                 <div className="change-value-settings">
+                    <p>Cambiar color aplicación</p>
+                    <Form.Item className ="settings-column">
+                        {getFieldDecorator('BackgroundApp', {
+                        rules: [{ required: true, message: ' ' }],
+                        })(
+                        <Select placeholder="Selecciona un color">
+                            {colours.map( ({name , colour} , index) => {
+                                return <Select.Option  key = {index} style={{color : colour , backgroundColor : colour}} value ={colour}>{name}</Select.Option>
+                            })}
+                        </Select>
+                        )}
+                    </Form.Item>
+                </div>
+                <div className="change-value-settings">
                     <p >Cambiar privacidad</p>
                     <Form.Item className="settings-column">
                         {getFieldDecorator('Private', {
@@ -225,6 +247,7 @@ class SettingsFormulary extends React.Component{
                 </div>
                 <div className = "change-value-button">
                     <button htmltype="submit">Guardar cambios</button>
+                    <button className="delete-user" onClick ={this.handleDeleteUser}>Borrar usuario</button>
                 </div>
                 </Form>
                 </div>

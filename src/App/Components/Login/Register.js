@@ -4,9 +4,9 @@ import {
     Drawer, Form, Button, Col, Row, Input,  DatePicker,message ,Select 
   } from 'antd';
 import Axios from 'axios';
+import colours from '../../Functions/Colours';
+import validateEmail from '../../Functions/Validations';
 
-  
-    
   class DrawerForm extends React.Component {
     state = { visible: false };
   
@@ -16,28 +16,30 @@ import Axios from 'axios';
       this.props.form.validateFieldsAndScroll((err, values) => {
         
         if (!err) {
+          if(!validateEmail(values.Email)){
+            return message.error("Email inválido");
+          }
+          debugger;
             const profile = {
               Name : values.Name,
               LastName : values.LastName,
               Email : values.Email,
               Password : values.Password,
               DateBirthday : values.DateBirthDay,
+              BackgroundApp : values.BackgroundApp,
               Private : values.Private === "public" ? false : true
             }
            Axios.post('https://localhost:44310/api/user/AddUser',profile).then(res =>{
-            if(res.data === -1){
+            if(res.data.userId === -1){
               message.error("Ya existe un usuario con este email");
             }
             else{
-              localStorage.setItem("UserId" , res.data);
+              localStorage.setItem("UserId", res.data.userId);
+              localStorage.setItem("BackgroundApp", res.data.backgroundApp);
               message.success("Usuario creado");
               this.props.history.push("/home");
-              
             }
-            
           });
-          
-
         }
       });
     }
@@ -117,15 +119,19 @@ import Axios from 'axios';
                     )}
                   </Form.Item>
                 </Col>
-                {/* <Col span={12}>
+                <Col span={12}>
                   <Form.Item label="Color de la aplicacion">
-                    {getFieldDecorator('Background-App', {
+                    {getFieldDecorator('BackgroundApp', {
                       rules: [{ required: true, message: 'Introduzca color' }],
                     })(
-                        <Input type="color"  />
+                      <Select placeholder="Selecciona un color">
+                          {colours.map( ({name , colour} , index) => {
+                            return <Select.Option  key = {index} style={{color : colour , backgroundColor : colour}} value ={colour}>{name}</Select.Option>
+                          })}
+                      </Select>
                     )}
                   </Form.Item>
-                </Col> */}
+                </Col> 
                
                 <Col span={12}>
                     <Form.Item label="Tipo de cuenta">

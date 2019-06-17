@@ -12,15 +12,21 @@ class Photo extends React.Component{
             photoInfo : {}
         }
         this.handleClick = this.handleClick.bind(this);
+        this.handleClickLike = this.handleClickLike.bind(this);
     }
 
     componentWillMount(){
         Axios.get("https://localhost:44310/api/userphoto/getPhotoinfo/"+this.props.match.params.photoId)
         .then(res =>{
-                        this.setState({
-                            photoInfo : res.data
-                        });
-                    }
+            var isLike = res.data.likesPhotoDtos.some( 
+                photo => parseInt(localStorage.getItem("UserId")) === photo.userId
+                );
+                this.setState({
+                    photoInfo : res.data,
+                    numLikes : res.data.likesPhotoDtos.length,
+                    isLike
+                });
+             }
             );
     }
 
@@ -32,6 +38,41 @@ class Photo extends React.Component{
             .then(res =>{
                 this.props.history.push("/profile/" + this.state.photoInfo.userId);
             });
+    }
+    handleClickLike(){
+        if(this.state.isLike){
+            this.dislikePhoto();
+        }else{
+            this.likePhoto();
+        }
+    }
+    likePhoto(){
+        var isLike = !this.state.isLike;
+        var numLikes = this.state.numLikes;
+        var likeDto = {
+            UserId : parseInt(localStorage.getItem("UserId")),
+            UserPhotoId : this.props.match.params.photoId
+        }
+        Axios.post("https://localhost:44310/api/LikesPhoto/addlike" , likeDto).then(()=>{
+            this.setState({
+                 numLikes : numLikes + 1,
+                 isLike
+                })
+        });
+    }
+    dislikePhoto(){
+        var isLike = !this.state.isLike;
+        var numLikes = this.state.numLikes;
+        var likeDto = {
+            UserId : parseInt(localStorage.getItem("UserId")),
+            UserPhotoId : this.props.match.params.photoId
+        }
+        Axios.post("https://localhost:44310/api/LikesPhoto/deletelike" , likeDto).then(()=>{
+            this.setState({ 
+                numLikes : numLikes - 1,
+                isLike
+            })
+        })
     }
 
     render(){
@@ -55,7 +96,7 @@ class Photo extends React.Component{
                     <Col span={4}>
                         <Link to ={"/profile/" + this.state.photoInfo.userId}><h2>{this.state.photoInfo.userName}</h2></Link>
                     </Col>
-                    <Col span={19}>
+                    <Col span={17}>
                         <h4>{this.state.photoInfo.title}</h4>
                     </Col>
                     <Col span ={1}>
@@ -64,9 +105,15 @@ class Photo extends React.Component{
                             <button className="delete-photo-button" onClick={this.handleClick}>
                                 <Icon type="delete"/>
                             </button> :
-                            <div></div>
+                            ""
                         }
                         
+                    </Col>
+                    <Col span ={2} style = {{fontSize : "2em"}}>
+                        <p style={{float : "left"}}>{this.state.numLikes}</p>
+                        <button className ="button-like" onClick ={this.handleClickLike}>
+                            <Icon type="heart" theme="filled" style={this.state.isLike ? {color : "red"} : {color:"grey" }}/>
+                        </button>
                     </Col>
                 </Row>
                 

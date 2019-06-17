@@ -158,3 +158,10 @@
 .settings-button:hover{
     transform:rotate(300deg);
 }
+.change-value-button{
+    margin-top:2em;
+}
+
+.delete-user{
+    background:red!important;
+}
