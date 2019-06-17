@@ -4,7 +4,7 @@ import {
 } from 'antd';
 import defaultUserPhoto from '../../../../Images/defaultUserPhoto.png';
 import moment from 'moment';
-import colours from '../../../Functions/Colours';
+import colours from '../../../Data/Colours';
 import Axios from 'axios';
 
 

@@ -4,7 +4,7 @@ import {
     Drawer, Form, Button, Col, Row, Input,  DatePicker,message ,Select 
   } from 'antd';
 import Axios from 'axios';
-import colours from '../../Functions/Colours';
+import colours from '../../Data/Colours';
 import validateEmail from '../../Functions/Validations';
 
   class DrawerForm extends React.Component {
